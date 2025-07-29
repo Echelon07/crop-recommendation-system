@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crop Recommendation System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="top-section">
+            <!-- Left: Profile -->
+            <<div class="profile">
+    <img src="{{ url_for('static', filename='your_photo.jpg') }}" >
+
+    <div>
+        <h3>About Me</h3>
+        <p>👋 Hi, I'm <strong>Michael Ugwoke</strong>, a skilled and passionate <strong>Data Analyst & Data Scientist</strong> with hands-on experience delivering real-world solutions. I specialize in transforming raw data into actionable insights, building predictive models, and creating interactive dashboards that drive smarter decisions.</p>
+
+        <p>💡 This Crop Recommendation System is one of my favorite projects — designed to help farmers make data-informed planting decisions based on soil and environmental conditions.</p>
+
+        <p>📩 <strong>For your feedback, recommendation or collaboration, Reach out to me:</strong> <a href="benedictmichael414@gmail.com">benedictmichael414@com</a></p>
+
+        <p>🗂️ <strong>Explore my work:</strong> <a href="michael07.my.canva.site" target="_blank">My Data Analysis Portfolio</a></p>
+    </div>
+</div>
+
+
+            <!-- Right: Form -->
+            <div class="form-section">
+                <h1>Crop Recommendation System</h1>
+                <form action="/predict" method="POST">
+                    <input type="number" step="any" name="nitrogen" placeholder="Nitrogen (N)" required>
+                    <input type="number" step="any" name="phosphorus" placeholder="Phosphorus (P)" required>
+                    <input type="number" step="any" name="potassium" placeholder="Potassium (K)" required>
+                    <input type="number" step="any" name="temperature" placeholder="Temperature (°C)" required>
+                    <input type="number" step="any" name="humidity" placeholder="Humidity (%)" required>
+                    <input type="number" step="any" name="ph" placeholder="pH Level" required>
+                    <input type="number" step="any" name="rainfall" placeholder="Rainfall (mm)" required>
+                    <button type="submit">Predict</button>
+                </form>
+                {% if prediction_text %}
+    <h2>{{ prediction_text }}</h2>
+{% endif %}
+
+
+                
+                    <h2></h2>
+                
+            </div>
+        </div>
+
+        <!-- Bottom Section: Problem -->
+<div class="problem-section">
+    <h3>The Statement of Problem</h3>
+    <p>🌾 In many parts of the world, especially in developing regions, farmers often rely on guesswork or outdated knowledge when deciding what crop to plant. This leads to poor yield, wasted resources, and economic hardship.</p>
+
+    <p>📊 My Crop Recommendation System uses real environmental and soil data — including Nitrogen, Phosphorus, Potassium, temperature, humidity, pH, and rainfall — to predict the most suitable crop for a given condition. With this, farmers can make smarter, data-driven decisions, increase productivity, and reduce risk.</p>
+
+    <p>🎯 This project is built to bridge the gap between technology and agriculture, empowering farmers with actionable insights at their fingertips.</p>
+</div>
+
+    </div>
+</body>
+
+</html>
