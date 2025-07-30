@@ -9,7 +9,7 @@
         <div class="top-section">
             <!-- Left: Profile -->
             <div class="profile">
-                <img src="{{ url_for('static', filename='your_photo.jpg') }}">
+                <img src="{{ url_for('static', filename='your_photo.jpg') }}" alt="Profile Photo">
 
                 <div>
                     <h3>About Me</h3>
@@ -18,7 +18,7 @@
                     <p>💡 This Crop Recommendation System helps farmers make data-informed planting decisions based on soil and environmental conditions.</p>
 
                     <p>📩 <strong>Reach out to me:</strong> <a href="mailto:benedictmichael414@gmail.com">benedictmichael414@gmail.com</a></p>
-
+                    
                     <p>🗂️ <strong>My Portfolio:</strong> <a href="https://michael07.my.canva.site" target="_blank">My Data Analysis Portfolio</a></p>
                 </div>
             </div>
@@ -27,29 +27,29 @@
             <div class="form-section">
                 <h1>Crop Recommendation System</h1>
                 <form action="/predict" method="POST">
-                    <label>Nitrogen:</label><input type="text" name="N"><br>
-                    <label>Phosphorus:</label><input type="text" name="P"><br>
-                    <label>Potassium:</label><input type="text" name="K"><br>
-                    <label>Temperature:</label><input type="text" name="temperature"><br>
-                    <label>Humidity:</label><input type="text" name="humidity"><br>
-                    <label>pH:</label><input type="text" name="ph"><br>
-                    <label>Rainfall:</label><input type="text" name="rainfall"><br>
+                    <label>Nitrogen:</label><input type="text" name="N">
+                    <label>Phosphorus:</label><input type="text" name="P">
+                    <label>Potassium:</label><input type="text" name="K">
+                    <label>Temperature:</label><input type="text" name="temperature">
+                    <label>Humidity:</label><input type="text" name="humidity">
+                    <label>pH:</label><input type="text" name="ph">
+                    <label>Rainfall:</label><input type="text" name="rainfall">
                     <button type="submit">Predict</button>
                 </form>
 
                 {% if prediction_text %}
-                <h3>{{ prediction_text }}</h3>
+                <div class="result">
+                    <h3>{{ prediction_text }}</h3>
+                </div>
                 {% endif %}
             </div>
         </div>
 
-        <!-- ✅ Statement of Problem -->
+        <!-- Problem Section -->
         <div class="problem">
             <h3>The Statement of Problem</h3>
             <p>🌾 In many parts of the world, especially in developing regions, farmers often rely on guesswork or outdated knowledge when deciding what crop to plant. This leads to poor yield, wasted resources, and economic hardship.</p>
-
             <p>📊 My Crop Recommendation System uses real environmental and soil data — including Nitrogen, Phosphorus, Potassium, temperature, humidity, pH, and rainfall — to predict the most suitable crop for a given condition.</p>
-            
             <p>🎯 This project bridges the gap between technology and agriculture, empowering farmers with actionable insights at their fingertips.</p>
         </div>
     </div>

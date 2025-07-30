@@ -1,42 +1,34 @@
-import joblib
-import numpy as np
 from flask import Flask, render_template, request
+import pickle
 
 app = Flask(__name__)
 
-# Load model, scaler, and label encoder
-model = joblib.load('crop_model.pkl')
-scaler = joblib.load('scaler.pkl')
-label_encoder = joblib.load('label_encoder.pkl')
+# Load your model, encoder, and scaler
+model = pickle.load(open('model.pickel', 'rb'))
+scaler = pickle.load(open('standard_scaler.pickel', 'rb'))
+label_encoder = pickle.load(open('label_encoder.pickel', 'rb'))
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('index.html')  # Make sure this file exists in templates/
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    try:
-        features = [
-            float(request.form['nitrogen']),
-            float(request.form['phosphorus']),
-            float(request.form['potassium']),
-            float(request.form['temperature']),
-            float(request.form['humidity']),
-            float(request.form['ph']),
-            float(request.form['rainfall'])
-        ]
-        
-        # Scale the features
-        scaled_features = scaler.transform([features])
-        
-        # Predict
-        prediction_encoded = model.predict(scaled_features)
-        prediction = label_encoder.inverse_transform(prediction_encoded)[0]
+    if request.method == 'POST':
+        N = float(request.form['N'])
+        P = float(request.form['P'])
+        K = float(request.form['K'])
+        temperature = float(request.form['temperature'])
+        humidity = float(request.form['humidity'])
+        ph = float(request.form['ph'])
+        rainfall = float(request.form['rainfall'])
 
-        # Pass prediction to template
-        return render_template('index.html', prediction_text=f"🌱 Recommended Crop: {prediction}")
-    
-    except Exception as e:
-        return render_template('index.html', prediction_text="❌ Error in prediction: " + str(e))
-if __name__ == '__main__':
+        scaled_input = scaler.transform([[N, P, K, temperature, humidity, ph, rainfall]])
+        prediction = model.predict(scaled_input)
+        crop = label_encoder.inverse_transform(prediction)[0]
+
+        return render_template('index.html', prediction_text=f"Recommended Crop: {crop}")
+
+if __name__ == "__main__":
     app.run(debug=True)
+
