@@ -5,9 +5,9 @@ app = Flask(__name__)
 
 # Load your model, encoder, and scaler
 model = pickle.load(open('crop_model.pkl', 'rb'))
-
 scaler = pickle.load(open('standard_scaler.pkl', 'rb'))
 label_encoder = pickle.load(open('label_encoder.pkl', 'rb'))
+
 
 @app.route('/')
 def home():
