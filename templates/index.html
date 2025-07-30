@@ -8,53 +8,50 @@
     <div class="container">
         <div class="top-section">
             <!-- Left: Profile -->
-            <<div class="profile">
-    <img src="{{ url_for('static', filename='your_photo.jpg') }}" >
+            <div class="profile">
+                <img src="{{ url_for('static', filename='your_photo.jpg') }}">
 
-    <div>
-        <h3>About Me</h3>
-        <p>👋 Hi, I'm <strong>Michael Ugwoke</strong>, a skilled and passionate <strong>Data Analyst & Data Scientist</strong> with hands-on experience delivering real-world solutions. I specialize in transforming raw data into actionable insights, building predictive models, and creating interactive dashboards that drive smarter decisions.</p>
+                <div>
+                    <h3>About Me</h3>
+                    <p>👋 Hi, I'm <strong>Michael Ugwoke</strong>, a skilled and passionate <strong>Data Analyst & Data Scientist</strong> with hands-on experience delivering real-world solutions.</p>
 
-        <p>💡 This Crop Recommendation System is one of my favorite projects — designed to help farmers make data-informed planting decisions based on soil and environmental conditions.</p>
+                    <p>💡 This Crop Recommendation System helps farmers make data-informed planting decisions based on soil and environmental conditions.</p>
 
-        <p>📩 <strong>For your feedback, recommendation or collaboration, Reach out to me:</strong> <a href="mailto:benedictmichael414@gmail.com">benedictmichael414@gmail.com</a>
-</p>
+                    <p>📩 <strong>Reach out to me:</strong> <a href="mailto:benedictmichael414@gmail.com">benedictmichael414@gmail.com</a></p>
 
-        <p>🗂️ <strong>Explore my work:</strong> <a href="https://michael07.my.canva.site" target="_blank">My Data Analysis Portfolio</a>
-
-        </p>
-    </div>
-</div>
-
+                    <p>🗂️ <strong>My Portfolio:</strong> <a href="https://michael07.my.canva.site" target="_blank">My Data Analysis Portfolio</a></p>
+                </div>
+            </div>
 
             <!-- Right: Form -->
             <div class="form-section">
-                    <h1>Crop Recommendation System</h1>
-    <form action="/predict" method="POST">
-        <label>Nitrogen:</label><input type="text" name="N"><br>
-        <label>Phosphorus:</label><input type="text" name="P"><br>
-        <label>Potassium:</label><input type="text" name="K"><br>
-        <label>Temperature:</label><input type="text" name="temperature"><br>
-        <label>Humidity:</label><input type="text" name="humidity"><br>
-        <label>pH:</label><input type="text" name="ph"><br>
-        <label>Rainfall:</label><input type="text" name="rainfall"><br>
-        <button type="submit">Predict</button>
-    </form>
+                <h1>Crop Recommendation System</h1>
+                <form action="/predict" method="POST">
+                    <label>Nitrogen:</label><input type="text" name="N"><br>
+                    <label>Phosphorus:</label><input type="text" name="P"><br>
+                    <label>Potassium:</label><input type="text" name="K"><br>
+                    <label>Temperature:</label><input type="text" name="temperature"><br>
+                    <label>Humidity:</label><input type="text" name="humidity"><br>
+                    <label>pH:</label><input type="text" name="ph"><br>
+                    <label>Rainfall:</label><input type="text" name="rainfall"><br>
+                    <button type="submit">Predict</button>
+                </form>
 
-    {% if prediction_text %}
-    <h3>{{ prediction_text }}</h3>
-    {% endif %}
-              </div>
-   
-    <h3>The Statement of Problem</h3>
-    <p>🌾 In many parts of the world, especially in developing regions, farmers often rely on guesswork or outdated knowledge when deciding what crop to plant. This leads to poor yield, wasted resources, and economic hardship.</p>
+                {% if prediction_text %}
+                <h3>{{ prediction_text }}</h3>
+                {% endif %}
+            </div>
+        </div>
 
-    <p>📊 My Crop Recommendation System uses real environmental and soil data — including Nitrogen, Phosphorus, Potassium, temperature, humidity, pH, and rainfall — to predict the most suitable crop for a given condition. With this, farmers can make smarter, data-driven decisions, increase productivity, and reduce risk.</p>
+        <!-- ✅ Statement of Problem -->
+        <div class="problem">
+            <h3>The Statement of Problem</h3>
+            <p>🌾 In many parts of the world, especially in developing regions, farmers often rely on guesswork or outdated knowledge when deciding what crop to plant. This leads to poor yield, wasted resources, and economic hardship.</p>
 
-    <p>🎯 This project is built to bridge the gap between technology and agriculture, empowering farmers with actionable insights at their fingertips.</p>
-</div>
-
+            <p>📊 My Crop Recommendation System uses real environmental and soil data — including Nitrogen, Phosphorus, Potassium, temperature, humidity, pH, and rainfall — to predict the most suitable crop for a given condition.</p>
+            
+            <p>🎯 This project bridges the gap between technology and agriculture, empowering farmers with actionable insights at their fingertips.</p>
+        </div>
     </div>
 </body>
-
 </html>
