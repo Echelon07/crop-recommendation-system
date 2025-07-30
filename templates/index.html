@@ -17,39 +17,35 @@
 
         <p>💡 This Crop Recommendation System is one of my favorite projects — designed to help farmers make data-informed planting decisions based on soil and environmental conditions.</p>
 
-        <p>📩 <strong>For your feedback, recommendation or collaboration, Reach out to me:</strong> <a href="benedictmichael414@gmail.com">benedictmichael414@com</a></p>
+        <p>📩 <strong>For your feedback, recommendation or collaboration, Reach out to me:</strong> <a href="mailto:benedictmichael414@gmail.com">benedictmichael414@gmail.com</a>
+</p>
 
-        <p>🗂️ <strong>Explore my work:</strong> <a href="michael07.my.canva.site" target="_blank">My Data Analysis Portfolio</a></p>
+        <p>🗂️ <strong>Explore my work:</strong> <a href="https://michael07.my.canva.site" target="_blank">My Data Analysis Portfolio</a>
+
+        </p>
     </div>
 </div>
 
 
             <!-- Right: Form -->
             <div class="form-section">
-                <h1>Crop Recommendation System</h1>
-                <form action="/predict" method="POST">
-                    <input type="number" step="any" name="nitrogen" placeholder="Nitrogen (N)" required>
-                    <input type="number" step="any" name="phosphorus" placeholder="Phosphorus (P)" required>
-                    <input type="number" step="any" name="potassium" placeholder="Potassium (K)" required>
-                    <input type="number" step="any" name="temperature" placeholder="Temperature (°C)" required>
-                    <input type="number" step="any" name="humidity" placeholder="Humidity (%)" required>
-                    <input type="number" step="any" name="ph" placeholder="pH Level" required>
-                    <input type="number" step="any" name="rainfall" placeholder="Rainfall (mm)" required>
-                    <button type="submit">Predict</button>
-                </form>
-                {% if prediction_text %}
-    <h2>{{ prediction_text }}</h2>
-{% endif %}
+                    <h1>Crop Recommendation System</h1>
+    <form action="/predict" method="POST">
+        <label>Nitrogen:</label><input type="text" name="N"><br>
+        <label>Phosphorus:</label><input type="text" name="P"><br>
+        <label>Potassium:</label><input type="text" name="K"><br>
+        <label>Temperature:</label><input type="text" name="temperature"><br>
+        <label>Humidity:</label><input type="text" name="humidity"><br>
+        <label>pH:</label><input type="text" name="ph"><br>
+        <label>Rainfall:</label><input type="text" name="rainfall"><br>
+        <button type="submit">Predict</button>
+    </form>
 
-
-                
-                    <h2></h2>
-                
-            </div>
-        </div>
-
-        <!-- Bottom Section: Problem -->
-<div class="problem-section">
+    {% if prediction_text %}
+    <h3>{{ prediction_text }}</h3>
+    {% endif %}
+              </div>
+   
     <h3>The Statement of Problem</h3>
     <p>🌾 In many parts of the world, especially in developing regions, farmers often rely on guesswork or outdated knowledge when deciding what crop to plant. This leads to poor yield, wasted resources, and economic hardship.</p>
 
