@@ -27,8 +27,8 @@
     }
 
     .about img {
-      width: 100px;
-      height: 100px;
+      width: 200px;
+      height: 200px;
       border-radius: 50%;
       object-fit: cover;
     }
@@ -89,6 +89,18 @@
       background-color: #218838;
     }
 
+    .prediction-result {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 20px;
+      color: #155724;
+      font-weight: bold;
+      background-color: #d4edda;
+      border: 1px solid #c3e6cb;
+      padding: 15px;
+      border-radius: 10px;
+    }
+
     .statement {
       margin-top: 40px;
       line-height: 1.6;
@@ -110,9 +122,10 @@
   <div class="container">
 
     <div class="about">
-      <img src="your-profile-pic.jpg" alt="Profile Picture">
+      <img src="{{ url_for('static', filename='your_photo.jpg') }}" alt="Profile Picture">
+
       <div class="about-text">
-        <h2>About Me</h2>
+        
         <p>👋 Hi, I'm <strong>Michael Ugwoke</strong>, a skilled and passionate <strong>Data Analyst & Data Scientist</strong> with hands-on experience delivering real-world solutions.</p>
         <p>💡 This Crop Recommendation System helps farmers make data-informed planting decisions based on soil and environmental conditions.</p>
         <p>📬For your feedback, Recommendation or collaboration, feel free to Reach out to me: <a href="mailto:benedictmichael44@gmail.com">benedictmichael44@gmail.com</a></p>
@@ -132,6 +145,12 @@
         <input type="number" name="rainfall" placeholder="Rainfall" step="any" required>
         <button type="submit" class="submit-btn">Recommend</button>
       </form>
+
+      {% if prediction_text %}
+      <div class="prediction-result">
+        {{ prediction_text }}
+      </div>
+      {% endif %}
     </div>
 
     <div class="statement">

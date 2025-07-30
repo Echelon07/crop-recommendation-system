@@ -1,13 +1,14 @@
 from flask import Flask, render_template, request
-import pickle
 import numpy as np
+import joblib
 
+# Initialize the Flask app
 app = Flask(__name__)
 
-# Load the model, label encoder, and scaler
-model = pickle.load(open('crop_model.pkl', 'rb'))
-label_encoder = pickle.load(open('label_encoder.pkl', 'rb'))
-scaler = pickle.load(open('scaler.pkl', 'rb'))
+# Load the saved model, scaler, and label encoder
+model = joblib.load('crop_model.pkl')
+scaler = joblib.load('scaler.pkl')
+label_encoder = joblib.load('label_encoder.pkl')
 
 @app.route('/')
 def home():
@@ -16,7 +17,7 @@ def home():
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
-        # Collect input values from the form
+        # Retrieve values from the form
         N = float(request.form['N'])
         P = float(request.form['P'])
         K = float(request.form['K'])
@@ -25,18 +26,20 @@ def predict():
         ph = float(request.form['ph'])
         rainfall = float(request.form['rainfall'])
 
-        # Prepare the input for prediction
-        input_features = np.array([[N, P, K, temperature, humidity, ph, rainfall]])
-        scaled_input = scaler.transform(input_features)
+        # Form input array
+        input_data = np.array([[N, P, K, temperature, humidity, ph, rainfall]])
 
-        # Make prediction
+        # Scale the input
+        scaled_input = scaler.transform(input_data)
+
+        # Predict and decode
         prediction = model.predict(scaled_input)
-        crop = label_encoder.inverse_transform(prediction)[0]
+        crop_name = label_encoder.inverse_transform(prediction)[0]
 
-        return render_template('index.html', prediction_text=f"🌱 Recommended Crop: {crop.upper()}")
-    
+        return render_template('index.html', prediction_text=f"🌱 Recommended Crop: {crop_name.upper()}")
+
     except Exception as e:
-        return render_template('index.html', prediction_text=f"Error: {str(e)}")
+        return render_template('index.html', prediction_text=f"❌ Error: {str(e)}")
 
 if __name__ == '__main__':
     app.run(debug=True)
